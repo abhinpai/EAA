@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EAA | Payment</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+
+
+    <style type="text/css">
+
+      body {
+        font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 30px;
+        color: #2C3E50;
+        background: #18BC9C;
+      }
+      #payment-logo{
+        width: 35%
+      }
+
+      #qr-code{
+        width: 32%;
+        height: 32%;
+      }
+      h4{
+        margin-top: 0px;
+      }
+      #scan-para{
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;  
+        color: #4d514b;
+      }
+
+      #modal-header{
+        margin-top: 10px;
+      }
+
+      #modal-content{
+        width: 100px;
+      }
+
+      #numb{
+        width: 50%;
+      }
+      #mobile-para{
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      #mobile-txt{
+        color: #01B9F5;
+      }
+
+      .confirmModal{
+        padding: 10rem;
+      }
+
+      .loader{
+        display: block;
+      }
+ 
+
+
+
+      .buttonload {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px /* Set a font size */
+}
+    </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div class="modal show" id="myModal" role="dialog">
+      <div class="modal-dialog ">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <center>
+            <h4 class="modal-title"><img id="payment-logo" src="logo.png"></h4>
+            <h4>Accepted Here</h4>
+            </center>
+          </div>
+
+          <div class="modal-body">
+            <div id="payment-body">
+              <center>
+                <img src="paytm-pay.png" width="100px">
+                <p id="scan-para"> Scan paytm code </p>
+                <img  id="qr-code" src="qr.png">                  
+              </center>
+            </div>
+          </div>
+
+          <div id="loading-div" style="display:none;" >
+            <!-- MDL Spinner Component -->
+            <center>
+              <div class="mdl-spinner mdl-js-spinner is-active"></div>
+              <p>Breathe in... Breathe out...</p>
+             
+            </center>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="btnCancel" onclick="myFunction()">Cancel</button>
+             <button type="button" class="btn btn-success btnProceed" >Proceed</button></div>
+        </div>
+        
+      </div>
+    </div> 
+  </div>
+
+
+<div class="modal" id="confirmModal" role="dialog">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title">Kudos...Thanks for registering...</h4>
+        </div>
+        <div class="modal-body" >
+            <div id="display-content">
+              <h5 style="font-weight: 1000;">Your ticket and reciept id has been sent to you registered mail id</h5>
+              <p style="color: red; font-weight: bold;"> Note:</p>
+              <ul>
+                <li style="margin-top: 10px;">Please do bring the receipt during the event date.</li>
+                <li> Kindly go through the event instruction given by the coordinator</li>
+                <li> People who caught misbaving or exploiting the event rule will be eliminate</li>
+                <li> In case of technical or any other problem please contact rspoective coordinator</li>
+              </ul>
+            </div>
+            <div id="loader ">
+              <center><div id="p1"  class="mdl-spinner mdl-js-spinner is-active" style="margin-top: 40px; margin-bottom: 20px"></div>
+              <p style="margin-bottom: 40px;"> Loading...</p>
+              </center>
+            </div>
+        </div>
+          <div class="modal-footer">
+          <center><h5>All the best !!</h5></center>
+          </div>
+
+   
+          <meta http-equiv="refresh" content="15; url='process.php'" />
+        
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+
+
+ 
+   document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress(75);
+    });
+
+
+
+   //on Button proceed
+    $(document).ready(function(){
+      $('.btnProceed').click(function(){
+        $('#confirmModal').modal('show');
+      }); 
+    });
+
+
+   
+</script>
+
+
+
+
+
+</body>
+</html>
